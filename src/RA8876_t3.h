@@ -119,10 +119,12 @@ typedef struct {
 
 #endif // _GFXFONT_H_ 
 
-
 // Default to a relatively slow speed for breadboard testing. 
+#ifndef LCD_SPI_SPEED
+	#define LCD_SPI_SPEED 3000000 // 3MHz
+#endif
 //const ru32 SPIspeed = 47000000;
-const ru32 SPIspeed = 3000000;
+const ru32 SPIspeed = LCD_SPI_SPEED;
 
 // Max. size in byte of SDRAM
 const uint32_t MEM_SIZE_MAX	= 16l*1024l*1024l;
