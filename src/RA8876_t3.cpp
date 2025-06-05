@@ -1503,12 +1503,11 @@ ru16 RA8876_t3::readPixel(int16_t x, int16_t y) {
 
 ru16 RA8876_t3::getPixel(ru16 x,ru16 y) {
   ru16 rdata = 0;
-  ru16 dummy = 0;
   selectScreen(currentPage);
   graphicMode(true);
   setPixelCursor(x, y);		          // set memory address
   ramAccessPrepare();			          // Setup SDRAM Access
-  dummy = lcdDataRead();
+  (void) lcdDataRead();
   rdata = (lcdDataRead() & 0xff);		// read low byte
   rdata |= lcdDataRead() << 8;	    // add high byte 
  	return rdata;
